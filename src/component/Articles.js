@@ -1,19 +1,16 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Like from "./Like";
 
-class TagsArticle extends React.Component {
+export default class Articles extends React.Component {
   state = {
     articles: [],
     isLoading: true,
     likesCount: "",
     liked: false
   };
-
   componentDidMount() {
-    fetch(
-      `https://conduit.productionready.io/api/articles?${this.props.location.state.query}`
-    )
+    fetch("https://conduit.productionready.io/api/articles?limit=30")
       .then(response => response.json())
       .then(data =>
         this.setState({
@@ -26,11 +23,10 @@ class TagsArticle extends React.Component {
 
   render() {
     const { articles } = this.state;
-
     return this.state.isLoading ? (
       <div className='lds-dual-ring' />
     ) : (
-      <div className='articles'>
+      <div className='articles column is-three-quarters"'>
         {articles &&
           articles.map((article, index) => {
             return (
@@ -42,7 +38,7 @@ class TagsArticle extends React.Component {
                         <figure className='image is-48x48'>
                           <img
                             src={article.author.image}
-                            alt='Placeholder image'
+                            alt='image'
                             height='30'
                             width='30'
                           />
@@ -52,7 +48,10 @@ class TagsArticle extends React.Component {
                         <Link
                           to={{
                             pathname: `/profiles/${article.author.username}`,
-                            state: { following: article.author.following }
+                            state: {
+                              following: article.author.following,
+                              query: `author=${article.author.username}`
+                            }
                           }}
                         >
                           <p className='title is-4'>
@@ -90,5 +89,3 @@ class TagsArticle extends React.Component {
     );
   }
 }
-
-export default withRouter(TagsArticle);
