@@ -29,7 +29,6 @@ export default class Articles extends React.Component {
       <div className='articles column is-four-fifths'>
         {articles &&
           articles.map((article, index) => {
-            console.log(article.favorited);
             return (
               <div key={index}>
                 <div className='card  has-margin-bottom-20'>

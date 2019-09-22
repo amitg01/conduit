@@ -9,7 +9,6 @@ export default class Like extends React.Component {
   };
 
   likeHandler = slug => {
-    console.log(this.state.liked);
     if (!this.state.liked) {
       fetch(
         `https://conduit.productionready.io/api/articles/${slug}/favorite`,
