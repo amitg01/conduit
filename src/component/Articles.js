@@ -10,6 +10,7 @@ export default class Articles extends React.Component {
     liked: false
   };
   componentDidMount() {
+    this.setState({ ...this.state, isLoading: true });
     fetch("https://conduit.productionready.io/api/articles?limit=30")
       .then(response => response.json())
       .then(data =>
@@ -24,7 +25,9 @@ export default class Articles extends React.Component {
   render() {
     const { articles } = this.state;
     return this.state.isLoading ? (
-      <div className='lds-dual-ring' />
+      <div className='column'>
+        <a className='button is-loading is-half is-borderless'>Loading</a>
+      </div>
     ) : (
       <div className='articles column is-four-fifths'>
         {articles &&
