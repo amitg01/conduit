@@ -44,48 +44,52 @@ export default class SignUp extends React.Component {
   render() {
     return (
       <div>
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='email'
-              onChange={this.handleChange}
-              value={this.state.email}
-              type='text'
-              placeholder='Email'
-            />
+        <div className='columns is-mobile'>
+          <div className='column is-three-fifths is-offset-one-fifth'>
+            <div className='field'>
+              <div className='control'>
+                <input
+                  className='input is-primary'
+                  name='email'
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                  type='text'
+                  placeholder='Email'
+                />
+              </div>
+            </div>
+
+            <div className='field'>
+              <div className='control'>
+                <input
+                  className='input is-primary'
+                  name='username'
+                  onChange={this.handleChange}
+                  value={this.state.username}
+                  type='text'
+                  placeholder='username'
+                />
+              </div>
+            </div>
+
+            <div className='field'>
+              <div className='control'>
+                <input
+                  className='input is-primary'
+                  name='password'
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                  type='text'
+                  placeholder='Password'
+                />
+              </div>
+            </div>
+
+            <button className='button' onClick={this.submitHandler}>
+              Sign Up
+            </button>
           </div>
         </div>
-
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='username'
-              onChange={this.handleChange}
-              value={this.state.username}
-              type='text'
-              placeholder='username'
-            />
-          </div>
-        </div>
-
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='password'
-              onChange={this.handleChange}
-              value={this.state.password}
-              type='text'
-              placeholder='Password'
-            />
-          </div>
-        </div>
-
-        <button className='button' onClick={this.submitHandler}>
-          Sign Up
-        </button>
       </div>
     );
   }

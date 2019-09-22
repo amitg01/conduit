@@ -6,6 +6,8 @@ import store from "./store";
 import App from "./component/App";
 
 import "bulma/css/bulma.css";
+import "bulma-helpers/css/bulma-helpers.min.css";
+
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

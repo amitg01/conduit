@@ -17,7 +17,7 @@ export default class Tags extends React.Component {
     return this.state.isLoading ? (
       <div className='lds-dual-ring' />
     ) : (
-      <div className='tags column is-one-quarter'>
+      <div className='column'>
         {tags &&
           tags.map((tag, index) => {
             return (

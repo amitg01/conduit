@@ -69,62 +69,64 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='title'
-              onChange={this.handleChange}
-              value={this.state.title}
-              type='text'
-              placeholder='title'
-            />
+      <div className='columns is-mobile'>
+        <div className='column is-three-fifths is-offset-one-fifth'>
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='title'
+                onChange={this.handleChange}
+                value={this.state.title}
+                type='text'
+                placeholder='title'
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='about'
-              onChange={this.handleChange}
-              value={this.state.about}
-              type='text'
-              placeholder='about'
-            />
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='about'
+                onChange={this.handleChange}
+                value={this.state.about}
+                type='text'
+                placeholder='about'
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='markdown'
-              onChange={this.handleChange}
-              value={this.state.markdown}
-              type='text'
-              placeholder='markdown'
-            />
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='markdown'
+                onChange={this.handleChange}
+                value={this.state.markdown}
+                type='text'
+                placeholder='markdown'
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='tags'
-              onChange={this.handleChange}
-              value={this.state.tags}
-              type='text'
-              placeholder='tags'
-            />
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='tags'
+                onChange={this.handleChange}
+                value={this.state.tags}
+                type='text'
+                placeholder='tags'
+              />
+            </div>
           </div>
-        </div>
 
-        <button className='button' onClick={this.submitHandler}>
-          Publish Article
-        </button>
+          <button className='button' onClick={this.submitHandler}>
+            Publish Article
+          </button>
+        </div>
       </div>
     );
   }

@@ -59,78 +59,83 @@ class Settings extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='imgUrl'
-              onChange={this.handleChange}
-              value={this.state.imgUrl}
-              type='text'
-              placeholder='image url'
-            />
+      <div className='columns is-mobile'>
+        <div className='column is-three-fifths is-offset-one-fifth'>
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='imgUrl'
+                onChange={this.handleChange}
+                value={this.state.imgUrl}
+                type='text'
+                placeholder='image url'
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='username'
-              onChange={this.handleChange}
-              value={this.state.username}
-              type='text'
-              placeholder='username'
-            />
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='username'
+                onChange={this.handleChange}
+                value={this.state.username}
+                type='text'
+                placeholder='username'
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='bio'
-              onChange={this.handleChange}
-              value={this.state.bio}
-              type='text'
-              placeholder='bio'
-            />
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='bio'
+                onChange={this.handleChange}
+                value={this.state.bio}
+                type='text'
+                placeholder='bio'
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='email'
-              onChange={this.handleChange}
-              value={this.state.email}
-              type='text'
-              placeholder='email'
-            />
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='email'
+                onChange={this.handleChange}
+                value={this.state.email}
+                type='text'
+                placeholder='email'
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='newPassword'
-              onChange={this.handleChange}
-              value={this.state.newPassword}
-              type='text'
-              placeholder='new Password'
-            />
+          <div className='field'>
+            <div className='control'>
+              <input
+                className='input is-primary'
+                name='newPassword'
+                onChange={this.handleChange}
+                value={this.state.newPassword}
+                type='text'
+                placeholder='new Password'
+              />
+            </div>
           </div>
-        </div>
 
-        <button className='button' onClick={this.submitHandler}>
-          Update
-        </button>
-        <button className='button' onClick={this.logout}>
-          Logout
-        </button>
+          <button
+            className='button has-margin-right-10'
+            onClick={this.submitHandler}
+          >
+            Update
+          </button>
+          <button className='button' onClick={this.logout}>
+            Logout
+          </button>
+        </div>
       </div>
     );
   }

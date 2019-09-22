@@ -26,17 +26,19 @@ export default class Articles extends React.Component {
     return this.state.isLoading ? (
       <div className='lds-dual-ring' />
     ) : (
-      <div className='articles column is-three-quarters"'>
+      <div className='articles column is-four-fifths'>
         {articles &&
           articles.map((article, index) => {
+            console.log(article.favorited);
             return (
               <div key={index}>
-                <div className='card'>
+                <div className='card  has-margin-bottom-20'>
                   <div className='card-content'>
                     <div className='media'>
                       <div className='media-left'>
                         <figure className='image is-48x48'>
                           <img
+                            className='is-rounded'
                             src={article.author.image}
                             alt='image'
                             height='30'
@@ -44,7 +46,7 @@ export default class Articles extends React.Component {
                           />
                         </figure>
                       </div>
-                      <div className='media-content'>
+                      <div className='media-content is-size-6'>
                         <Link
                           to={{
                             pathname: `/profiles/${article.author.username}`,
@@ -54,12 +56,12 @@ export default class Articles extends React.Component {
                             }
                           }}
                         >
-                          <p className='title is-4'>
+                          <p className='title is-size-6'>
                             {article.author.username}
                           </p>
                         </Link>
 
-                        <p className='subtitle is-6'>
+                        <p className='subtitle is-size-6'>
                           {new Date(article.createdAt).toDateString()}
                         </p>
                       </div>
@@ -76,12 +78,16 @@ export default class Articles extends React.Component {
                       >
                         {article.title}
                         <br />
-                        {article.body}
+                        <p>read more...</p>
                       </Link>
                     </div>
                   </div>
+                  <Like
+                    slug={article.slug}
+                    favoritesCount={article.favoritesCount}
+                    favorited={article.favorited}
+                  />
                 </div>
-                <hr />
               </div>
             );
           })}

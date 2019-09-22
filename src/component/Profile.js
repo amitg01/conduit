@@ -59,17 +59,25 @@ export default class Profile extends React.Component {
   }
 
   render() {
-
     return (
       <div>
-        <p>{this.state.user.username}</p>
-        <button
-          onClick={() => {
-            this.followHandler();
-          }}
-        >
-          {this.state.following ? "unfollow" : "follow"}
-        </button>
+        <section className='hero is-primary is-bold has-margin-bottom-15'>
+          <div className='hero-body'>
+            <div className='container has-text-centered'>
+              <h1 className='title'>{this.state.user.username}</h1>
+              <button
+                className='button is-pulled-right'
+                onClick={() => {
+                  this.followHandler();
+                }}
+              >
+                {this.state.following
+                  ? `unfollow ${this.state.user.username}`
+                  : `follow ${this.state.user.username}`}
+              </button>
+            </div>
+          </div>
+        </section>
         <TagsArticle query={`author=${this.state.user.username}`} />
       </div>
     );

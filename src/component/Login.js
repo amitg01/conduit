@@ -2,25 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 
 class SignIn extends React.Component {
-
   state = {
     email: "",
-    Password: "",
-    user: ""
+    Password: ""
   };
 
   handleChange = e => {
     var { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value });
   };
 
   submitHandler = () => {
     var data = {
       user: {
         email: this.state.email,
-        password: this.state.password
+        password: this.state.Password
       }
     };
 
@@ -50,35 +46,39 @@ class SignIn extends React.Component {
   render() {
     return (
       <div>
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='email'
-              onChange={this.handleChange}
-              value={this.state.email}
-              type='text'
-              placeholder='Email'
-            />
+        <div className='columns is-mobile'>
+          <div className='column is-three-fifths is-offset-one-fifth'>
+            <div className='field'>
+              <div className='control'>
+                <input
+                  className='input is-primary'
+                  name='email'
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                  type='text'
+                  placeholder='Email'
+                />
+              </div>
+            </div>
+
+            <div className='field'>
+              <div className='control'>
+                <input
+                  className='input is-primary'
+                  name='Password'
+                  onChange={this.handleChange}
+                  value={this.state.Password}
+                  type='text'
+                  placeholder='Password'
+                />
+              </div>
+            </div>
+
+            <button className='button' onClick={this.submitHandler}>
+              Log In!
+            </button>
           </div>
         </div>
-
-        <div className='field'>
-          <div className='control'>
-            <input
-              className='input is-primary'
-              name='password'
-              onChange={this.handleChange}
-              value={this.state.password}
-              type='text'
-              placeholder='Password'
-            />
-          </div>
-        </div>
-
-        <button className='button' onClick={this.submitHandler}>
-          Log In!
-        </button>
       </div>
     );
   }

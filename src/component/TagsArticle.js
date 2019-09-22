@@ -30,37 +30,38 @@ class TagsArticle extends React.Component {
     return this.state.isLoading ? (
       <div className='lds-dual-ring' />
     ) : (
-      <div className='articles'>
+      <div className='container'>
         {articles &&
           articles.map((article, index) => {
             return (
               <div key={index}>
-                <div className='card'>
+                <div className='card has-margin-bottom-10'>
                   <div className='card-content'>
                     <div className='media'>
                       <div className='media-left'>
                         <figure className='image is-48x48'>
                           <img
+                            className='is-rounded'
                             src={article.author.image}
-                            alt='Placeholder image'
+                            alt='image'
                             height='30'
                             width='30'
                           />
                         </figure>
                       </div>
-                      <div className='media-content'>
+                      <div className='media-content '>
                         <Link
                           to={{
                             pathname: `/profiles/${article.author.username}`,
                             state: { following: article.author.following }
                           }}
                         >
-                          <p className='title is-4'>
+                          <p className='title is-size-6'>
                             {article.author.username}
                           </p>
                         </Link>
 
-                        <p className='subtitle is-6'>
+                        <p className='subtitle is-size-6'>
                           {new Date(article.createdAt).toDateString()}
                         </p>
                       </div>
@@ -77,12 +78,11 @@ class TagsArticle extends React.Component {
                       >
                         {article.title}
                         <br />
-                        {article.body}
+                        read more...
                       </Link>
                     </div>
                   </div>
                 </div>
-                <hr />
               </div>
             );
           })}

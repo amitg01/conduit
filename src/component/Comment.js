@@ -33,6 +33,13 @@ export default class Comments extends React.Component {
   };
 
   render() {
-    return <div>{this.props.comment.body}</div>;
+    return (
+      <div>
+        <div className='has-margin-bottom-20'>{this.props.comment.body}</div>
+        <div className='is-pulled-right'>
+          {this.props.comment.author.username}
+        </div>
+      </div>
+    );
   }
 }
