@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 class SignIn extends React.Component {
   state = {
     email: "",
-    Password: ""
+    Password: "",
+    errMsg: null
   };
 
   handleChange = e => {
@@ -38,16 +39,25 @@ class SignIn extends React.Component {
               });
               this.props.dispatch({ type: "USER_LOGIN", payload: user });
             })
-          : alert("something went wrong");
+          : this.setState({
+              ...this.state,
+              errMsg: "email or password is wrong"
+            });
       })
-      .catch(error => console.error("Error:", error));
+      .catch(error => console.log(error));
   };
 
   render() {
+    const errMsg = this.state.errMsg;
     return (
       <div>
         <div className='columns is-mobile'>
           <div className='column is-three-fifths is-offset-one-fifth'>
+            <div className='has-text-centered'>
+              {errMsg ? (
+                <p className='is-size-4 has-text-danger'>{errMsg}</p>
+              ) : null}
+            </div>
             <div className='field'>
               <div className='control'>
                 <input

@@ -4,14 +4,13 @@ export default class SignUp extends React.Component {
   state = {
     email: "",
     username: "",
-    Password: ""
+    Password: "",
+    errMsg: null
   };
 
   handleChange = e => {
     var { name, value } = e.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({ ...this.state, [name]: value });
   };
 
   submitHandler = () => {
@@ -19,7 +18,7 @@ export default class SignUp extends React.Component {
       user: {
         username: this.state.username,
         email: this.state.email,
-        password: this.state.password
+        Password: this.state.Password
       }
     };
 
@@ -30,22 +29,33 @@ export default class SignUp extends React.Component {
         "Content-Type": "application/json"
       }
     })
-      .then(response => {
-        return response;
-      })
-      .then(response =>
-        response.status === 200
-          ? this.props.history.push("/Login")
-          : console.log(response.json())
+      .then(res => res.json())
+      .then(data =>
+        data.user
+          ? this.props.history.push("/login")
+          : this.setState({
+              ...this.state,
+              errMsg: data.errors["email"]
+                ? `email ${data.errors["email"]}`
+                : data.errors["password"]
+                ? `password ${data.errors["password"]}`
+                : `username is already taken`
+            })
       )
       .catch(error => console.error("Error:", error));
   };
 
   render() {
+    const errMsg = this.state.errMsg;
     return (
       <div>
         <div className='columns is-mobile'>
           <div className='column is-three-fifths is-offset-one-fifth'>
+            <div className='has-text-centered'>
+              {errMsg ? (
+                <p className='is-size-4 has-text-danger'>{errMsg}</p>
+              ) : null}
+            </div>
             <div className='field'>
               <div className='control'>
                 <input
@@ -76,11 +86,11 @@ export default class SignUp extends React.Component {
               <div className='control'>
                 <input
                   className='input is-primary'
-                  name='password'
+                  name='Password'
                   onChange={this.handleChange}
-                  value={this.state.password}
+                  value={this.state.Password}
                   type='text'
-                  placeholder='Password'
+                  placeholder='password'
                 />
               </div>
             </div>
